@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "laravel-tools",
+  "displayName": "Laravel Agentic Tools",
+  "version": "0.1.0",
+  "description": "Skills Claude Code pour initialiser, développer, tester et maintenir des projets PHP et Laravel.",
+  "author": {
+    "name": "@tomsjac",
+    "url": "https://github.com/tomsjac"
+  },
+  "homepage": "https://github.com/tomsjac/laravel-agentic-skills",
+  "repository": "https://github.com/tomsjac/laravel-agentic-skills",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "php",
+    "testing",
+    "phpstan",
+    "pest",
+    "composer"
+  ]
+}
