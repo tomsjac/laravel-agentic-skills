@@ -1,0 +1,21 @@
+{
+  "name": "laravel-agentic-skills",
+  "description": "Marketplace open-source pour le développement PHP/Laravel.",
+  "interface": {
+    "displayName": "Laravel agentic skills"
+  },
+  "plugins": [
+    {
+      "name": "laravel-tools",
+      "source": {
+        "source": "local",
+        "path": "./plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "development"
+    }
+  ]
+}

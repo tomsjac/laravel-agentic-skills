@@ -1,0 +1,15 @@
+{
+  "name": "laravel-agentic-skills",
+  "description": "Marketplace open-source de plugins Claude Code pour le développement PHP/Laravel.",
+  "owner": {
+    "name": "@tomsjac"
+  },
+  "plugins": [
+    {
+      "name": "laravel-tools",
+      "source": "./plugin",
+      "description": "Skills pour le développement PHP et Laravel assisté par IA.",
+      "category": "development"
+    }
+  ]
+}
