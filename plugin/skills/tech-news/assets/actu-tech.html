@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actu Tech — {{DATE}}</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --bg-card: #ffffff;
+      --text: #1a1a2e;
+      --text-muted: #6b7280;
+      --text-light: #9ca3af;
+      --accent: #6366f1;
+      --accent-light: #a5b4fc;
+      --border: #e5e7eb;
+      --code-bg: #f3f4f6;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-hover: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(.light) {
+        --bg: #0f0f1a;
+        --bg-card: #1a1a2e;
+        --text: #e5e7eb;
+        --text-muted: #9ca3af;
+        --text-light: #6b7280;
+        --accent: #818cf8;
+        --accent-light: #6366f1;
+        --border: #2d2d44;
+        --code-bg: #252540;
+        --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+        --shadow-hover: 0 4px 12px rgba(0,0,0,0.4);
+      }
+    }
+
+    :root.dark {
+      --bg: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --text-light: #6b7280;
+      --accent: #818cf8;
+      --accent-light: #6366f1;
+      --border: #2d2d44;
+      --code-bg: #252540;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-hover: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    header .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1.25rem 0;
+      padding-left: 1rem;
+      border-left: 4px solid var(--accent);
+      letter-spacing: -0.01em;
+    }
+
+    .article-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .article-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .article-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .article-card p {
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    blockquote {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 1rem;
+      padding: 0;
+      border: none;
+    }
+
+    blockquote a {
+      color: var(--text-muted);
+    }
+
+    .lang-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-style: normal;
+      padding: 0.1em 0.45em;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-left: 0.35em;
+      letter-spacing: 0.02em;
+    }
+
+    .lang-fr {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .lang-en {
+      background: #fde68a;
+      color: #92400e;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(.light) .lang-fr {
+        background: #1e3a5f;
+        color: #93c5fd;
+      }
+      :root:not(.light) .lang-en {
+        background: #5c4813;
+        color: #fcd34d;
+      }
+    }
+
+    :root.dark .lang-fr {
+      background: #1e3a5f;
+      color: #93c5fd;
+    }
+
+    :root.dark .lang-en {
+      background: #5c4813;
+      color: #fcd34d;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 0.75rem 0;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--border);
+      border: none;
+      border-radius: 50%;
+      width: 2.25rem;
+      height: 2.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s ease, opacity 0.2s ease;
+      z-index: 10;
+      opacity: 0.5;
+    }
+
+    .theme-toggle:hover {
+      opacity: 1;
+      box-shadow: var(--shadow-hover);
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 1rem; }
+      header h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.25rem; }
+      .article-card { padding: 1rem; }
+      .article-card h3 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9790;</button>
+  <div class="container">
+    <header>
+      <h1>Actu Tech — {{DATE}}</h1>
+      <p class="subtitle">Daily tech watch</p>
+    </header>
+
+    <main>
+      {{CONTENT}}
+    </main>
+
+    <footer>
+      {{SOURCES}}
+    </footer>
+  </div>
+  <script>
+    (function() {
+      var btn = document.getElementById('themeToggle');
+      var root = document.documentElement;
+      var stored = localStorage.getItem('theme');
+      if (stored === 'dark') { root.classList.add('dark'); root.classList.remove('light'); }
+      else if (stored === 'light') { root.classList.add('light'); root.classList.remove('dark'); }
+      function isDark() {
+        return root.classList.contains('dark') ||
+          (!root.classList.contains('light') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      }
+      function updateIcon() { btn.textContent = isDark() ? '\u2600' : '\u263E'; }
+      updateIcon();
+      btn.addEventListener('click', function() {
+        if (isDark()) {
+          root.classList.remove('dark');
+          root.classList.add('light');
+          localStorage.setItem('theme', 'light');
+        } else {
+          root.classList.remove('light');
+          root.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+        updateIcon();
+      });
+    })();
+  </script>
+</body>
+</html>
